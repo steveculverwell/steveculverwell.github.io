@@ -3,6 +3,7 @@
     <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
     <link href="css/master.css" type="text/css" rel="stylesheet"/>
+    <meta http-equiv="refresh" content="5" >
  </head>
   <body>
 
@@ -23,7 +24,6 @@
 
     <script type="text/javascript">
       $(document).ready(function() {
-      setTimeout("location.reload(true);", 5000);        
       $.ajax({
           url: 'https://api.tfl.gov.uk/Line/Mode/tube/Status?detail=False&app_id=beb81da8&app_key=068027e99d6e41a6d394d23e7b68b871',
           type: 'GET',
