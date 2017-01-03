@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>:: Work Hompage ::</title>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+
+	<style>
+body {
+font-family: arial;
+background: #f8f9fb;
+}
+.container{
+margin: 0 20px 0 0;
+}
+.row{
+background-color: lightgrey;
+margin: 0 0 10px;
+padding: 10px 5px;
+border-radius: 3px;
+display: inline-block;
+width: 100%;
+font-size: 11px;
+box-shadow: 0px 6px 7px -4px rgba(0, 0, 0, 0.4);
+}
+p{
+margin:0;
+padding: 0;
+}
+p.perc{
+margin-top: 10px;
+background-image:linear-gradient(to right, white, #bada55);
+}
+	</style>
+</head>
+<body>	
+	<div class="container main"></div>
+
+	<script id="templateOne" type="text/x-handlebars-template">
+	        {{#each this}}
+	            <div class="row">
+					{{commonName}} - <a href="http://maps.google.com/?q={{lat}},{{lon}}">map</a>
+					{{dockInfo additionalProperties}}
+	            </div>
+	        {{/each}}
+	</script>
+
+	<script>
+		(function(){
+			var bikeAPI = "https://api.tfl.gov.uk/BikePoint";
+			// var bikeAPI = "bikePoint.json";
+			$.getJSON(bikeAPI)
+		        .done(function(data){
+
+				    Handlebars.registerHelper('dockInfo', function(dock){
+						// console.log(dock);
+						var objEmptyDock = dock.filter( obj => obj.key == 'NbEmptyDocks' ),
+							objBikes = dock.filter( obj => obj.key == 'NbBikes' ),
+							objDock = dock.filter( obj => obj.key == 'NbDocks' );
+
+						var valEmptyDock = parseInt(objEmptyDock[0].value),
+							valBikes     = parseInt(objBikes[0].value),
+							valDock      = parseInt(objDock[0].value);
+
+							// console.log("Docks that are empty " + valEmptyDock);
+							// console.log("Bikes out " + valBikes);
+							// console.log("Total docks " + valDock);
+
+						var percentageTaken = Math.ceil((valBikes / valDock ) * 100);
+
+						var dockCondition = valEmptyDock + valBikes == valDock ? "complete" : "broken";
+						var string = `<p class="${dockCondition}">Room for ${valDock} bikes. ${valBikes} of which are being used. ${valEmptyDock} remain.</p><p class="perc" style="width:${percentageTaken}%">&nbsp;</p>`;
+						
+						return new Handlebars.SafeString(string);
+
+					});
+
+					var source = $("#templateOne").html();
+					var template = Handlebars.compile(source);
+					var html = template(data);
+					$('.container.main').html(html)
+		        });
+		})();
+	</script>
+</body>
+</html>
