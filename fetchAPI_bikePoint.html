@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>:: Work Hompage ::</title>
+	<script src="jq.js"></script>
+	<script src="handlebars.js"></script>
+	<style>
+	body{font-family: verdana;}
+	ul, li{
+		margin: 0;
+		padding: 0;
+	}
+
+	li{
+		list-style: none;
+		margin-bottom: 8px;
+		border: 1px solid darkgray;
+		line-height: 23px;
+		font-size: 12px;
+		padding: 5px;
+		text-transform: capitalize;
+		background-color: #eee;
+		box-shadow: 0px 6px 7px -4px rgba(0, 0, 0, 0.4);
+
+	}
+
+	a{
+		text-decoration: none;
+		color: grey;
+		transition: all 0.3s ease 0s;
+	}
+
+	a:hover{
+		color: #5e5e5e;
+	}
+
+	.hl{
+		background-color: #ccc;
+	}
+	</style>
+</head>
+<body>
+
+	<form action="">
+		<input type="text" class="search" placeholder="commonName">
+		<ul class="suggestions">
+			<li>filter for place names</li>
+		</ul>
+	</form>
+
+	<script>
+
+			// const bikeAPI = "https://api.tfl.gov.uk/BikePoint";
+			const bikeAPI = "bikePoint.json";
+
+			const bikePoints = [];
+
+			fetch(bikeAPI)
+				.then(blob => blob.json())
+				.then(data => bikePoints.push(...data));
+        //https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Spread_operator
+        
+			function findMatches(wordToMatch, bikePoints){
+				return bikePoints.filter(place => {
+					const regex = new RegExp(wordToMatch, 'gi');
+					return place.commonName.match(regex)
+				});
+			}
+
+			function displayMatches(){
+
+				const matchArray = findMatches(this.value, bikePoints);
+
+				const html = matchArray.map(place => {
+
+					const regex = new RegExp(this.value, 'gi');
+					const bikePlaceName = place.commonName.replace(regex, `<span class="hl">${this.value}</span>`);
+
+					return `
+						<li>
+							<span class="name">${bikePlaceName}</span>
+							- <span><a href="http://maps.google.com/?q=${place.lat},${place.lon}">map</a></span>
+						</li>`;
+
+				}).join('');
+
+				suggestion.innerHTML = html;
+
+			}
+
+			const searchInput = document.querySelector('.search');
+			const suggestion = document.querySelector('.suggestions');
+
+			searchInput.addEventListener('change', displayMatches);
+			searchInput.addEventListener('keyup', displayMatches);
+
+
+	</script>
+</body>
+</html>
