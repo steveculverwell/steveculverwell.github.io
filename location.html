@@ -53,10 +53,10 @@
   function calculateAndDisplayRoute(directionsService, directionsDisplay) {
     directionsService.route({
 
-      origin: new google.maps.LatLng(51.5182958, -0.1431354),
-      destination: new google.maps.LatLng(51.5138, 0.0984),
+      origin: new google.maps.LatLng(51.5054, 0.0235),
+      destination: new google.maps.LatLng(51.5313, 0.1570),
 
-      travelMode: 'WALKING'
+      travelMode: 'DRIVING'
     }, function(response, status) {
       if (status === 'OK') {
         directionsDisplay.setDirections(response);
@@ -68,8 +68,6 @@
 
 
 </script>
-<script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEfmey1j75MqER5yimNIi3so7KdpQb3Us&callback=initMap">
-</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkfEhp1WABtSaUyFiHVVgmrBgrJNPMfp0&callback=initMap"></script>
 </body>
 </html>
