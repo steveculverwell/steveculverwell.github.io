@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+  <style>
+  #map {
+    height: 480px;
+    width: 100%;
+  }
+  body{
+    font-family: 'Quicksand', sans-serif;
+  }
+  h3{font-size: 3em;margin: 0; padding: 0;}
+  p{font-size: 1.5em;}
+  </style>
+</head>
+<body>
+  <h3>Boris Bike</h3>
+  <p>Cluster map of Boris Bikes around London</p>
+  <div id="map"></div>
+  <div class="sources">
+    <ul>
+      <li><a href="https://developers.google.com/maps/documentation/javascript/marker-clustering">https://developers.google.com/maps/documentation/javascript/marker-clustering</a></li>
+      <li><a href="https://api.tfl.gov.uk/BikePoint">https://api.tfl.gov.uk/BikePoint</a></li>
+    </ul>
+  </div>
+  <script>
+
+    function initMap() {
+
+      const center = {lat: 51.5074, lng: -0.1278};
+      const map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 12,
+        center
+      });
+
+      var bikeAPI = "https://api.tfl.gov.uk/BikePoint";
+
+      $.getJSON(bikeAPI).done(function(data) {
+
+        var locationsArray = [];
+
+				for(var i = 0; i < data.length; i++){
+					var location = {
+						lat: data[i].lat,
+						lng: data[i].lon
+					}
+					locationsArray.push(location);
+				}
+
+        var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+        var markers = locationsArray.map(function(derps, i) {
+          return new google.maps.Marker({
+            position: derps,
+            label: labels[i % labels.length]
+          });
+        });
+
+        // Add a marker clusterer to manage the markers.
+        var markerCluster = new MarkerClusterer(map, markers,
+            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+      });
+    }
+  </script>
+  <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkfEhp1WABtSaUyFiHVVgmrBgrJNPMfp0&callback=initMap"></script>
+</body>
+</html>
