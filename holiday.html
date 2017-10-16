@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Sue+Ellen+Francisco" rel="stylesheet">
+  <style>
+  	.text{
+  		font-family: 'Sue Ellen Francisco', cursive;
+  		font-size: 50px;
+  		text-align: center;
+  	}
+  </style>
+
+</head>
+<body>
+	
+	<div class="text">Days until holiday</div>
+	<div class="days text"></div>
+	<div class="text">Woohoo</div>
+	<div class="text">🌴 😎 ☀️🍹 </div>
+
+	<script>
+		
+		const holiday = new Date("Nov 6, 2017 06:00:00").getTime();
+		const today = new Date().getTime();
+		const time = holiday - today;
+		const days = Math.floor(time / (1000 * 60 * 60 * 24));
+
+		const daysHTML = document.querySelector('.days');
+			daysHTML.innerHTML = days;
+
+	</script>
+
+</body>
+</html>
