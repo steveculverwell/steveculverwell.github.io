@@ -12,6 +12,8 @@
 <body>
 
 <h1>The Spread Operator</h1>
+<p class="credit">example taken from http://wesbos.com/courses</p>
+
 <div class="box">
 <p>Takes every item from an iterable and apply it to a new containing array</p>
 <pre>
@@ -25,6 +27,7 @@ const races = [...marathons, ...triathlons];
 </pre>	
 </div>
 
+<div class="box">
 <h2>Using Spread to copy an existing array</h2>
 <p>To copy an array rather than reference it. Meaning you can change an index of the array and not affect the original</p>
 <pre>
@@ -35,20 +38,53 @@ completedRaces[0]= "Brighton";
 // (6) ["Brighton", "loch ness", "athens", "london", "blenheim", "outlaw"]
 // console.log(races);
 // (6) ["london", "loch ness", "athens", "london", "blenheim", "outlaw"]</code></pre>
+</div>
+
+<style>
+	.demo-word{text-align: center;}
+	.demo-word span:hover{text-transform: uppercase;color: red; font-weight: 800}
+</style>
+<div class="box">
+	<h2>An Exercise</h2>
+	<p class="demo-word">Triathlon</p>
+	<pre><code class="language-js">// grab the element with a class of .demo-word 
+const heading = document.querySelector('.demo-word');
+console.log(heading);
+
+// grab only the text from the element
+console.log(heading.textContent);
+
+heading.innerHTML = wrapEachLetterInASpanElement(heading.textContent);
+
+function wrapEachLetterInASpanElement(word) {
+	// spread the argument into a new array.
+	// map over each part of that array
+	// fat arrow es6 function
+	// take each letter and wrap it in a span tag
+	return [...word].map(letter => `<span>${letter}</span>`).join('');
+}</code></pre>
+</div>
 
 <script>
 	
 	const marathons = ['london', 'loch ness', 'athens'];
 	const triathlons = ['london', 'blenheim', 'outlaw'];
-
 	const races = [...marathons, ...triathlons];
-
 	console.log(races);
-
 	const completedRaces = [...races];
 	completedRaces[0]= "Brighton";
 	console.log(completedRaces);
 	console.log(races);
+
+	const heading = document.querySelector('.demo-word');
+	console.log(heading);
+	console.log(heading.textContent);
+	
+	heading.innerHTML = wrapEachLetterInASpanElement(heading.textContent);
+	
+	function wrapEachLetterInASpanElement(word) {
+		return [...word].map(letter => `<span>${letter}</span>`).join('');
+	}
 
 </script>
 
