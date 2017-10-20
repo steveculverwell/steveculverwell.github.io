@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ES6 - Spread</title>
+	<link href="https://fonts.googleapis.com/css?family=Quicksand|Roboto:300" rel="stylesheet">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/prism.css">
+	<script src="js/prism.js"></script>
+</head>
+
+<body>
+
+<h1>The Spread Operator</h1>
+<div class="box">
+<p>Takes every item from an iterable and apply it to a new containing array</p>
+<pre>
+<code class="language-js">const marathons = ['london', 'loch ness', 'athens'];
+const triathlons = ['london', 'blenheim', 'outlaw'];
+
+const races = [...marathons, ...triathlons];
+
+// console.log(races);
+// (6) ["london", "loch ness", "athens", "london", "blenheim", "outlaw"]</code>
+</pre>	
+</div>
+
+<h2>Using Spread to copy an existing array</h2>
+<p>To copy an array rather than reference it. Meaning you can change an index of the array and not affect the original</p>
+<pre>
+<code class="language-js">const completedRaces = [...races];
+completedRaces[0]= "Brighton";
+
+// console.log(completedRaces);
+// (6) ["Brighton", "loch ness", "athens", "london", "blenheim", "outlaw"]
+// console.log(races);
+// (6) ["london", "loch ness", "athens", "london", "blenheim", "outlaw"]</code></pre>
+
+<script>
+	
+	const marathons = ['london', 'loch ness', 'athens'];
+	const triathlons = ['london', 'blenheim', 'outlaw'];
+
+	const races = [...marathons, ...triathlons];
+
+	console.log(races);
+
+	const completedRaces = [...races];
+	completedRaces[0]= "Brighton";
+	console.log(completedRaces);
+	console.log(races);
+
+</script>
+
+
+</body>
+</html>
