@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ES6 - Rest Param</title>
+	<link href="https://fonts.googleapis.com/css?family=Quicksand|Roboto:300" rel="stylesheet">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/prism.css">
+	<script src="js/prism.js"></script>
+</head>
+
+<body>
+
+<h1>The Rest Param</h1>
+<p class="credit">example taken from http://wesbos.com/courses</<p></p>
+
+<div class="box">
+<p>The rest param take multiple items and puts them into a single array, the opposite to <a href="spread.html">Spread</a></p>
+<pre>
+<code class="language-js">function timeTable(number, ...numbers){
+	return numbers.map(n => n * number)
+}
+
+const timestable = timeTable(5, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+console.log(timestable);</code>
+</pre>	
+</div>
+
+
+<script>
+	
+function timeTable(number, ...numbers){
+	return numbers.map(n => n * number)
+}
+
+const timestable = timeTable(5, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+console.log(timestable);
+
+</script>
+
+
+</body>
+</html>
