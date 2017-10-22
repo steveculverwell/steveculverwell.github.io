@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ES6 - Destructuring</title>
+	<link href="https://fonts.googleapis.com/css?family=Quicksand|Roboto:300" rel="stylesheet">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/prism.css">
+	<script src="js/prism.js"></script>
+</head>
+
+<body>
+
+<h1>Destructuring</h1>
+<p class="credit">example taken from http://wesbos.com/courses</<p></p>
+
+<div class="box">
+<p>Allows you to extract data items from an array into their own variable</p>
+<pre>
+<code class="language-js">const triathlon = {
+	first: 'alistar',
+	last: 'brownlee',
+	country: 'england',
+	medals: {
+		superleague: 'no',
+		olympic: 'gold',
+		itu: 'gold'
+	},
+	sponsor: {
+		one: 'aldi',
+		two: 'yorkshire tea',
+		three: 'scott bikes',
+		four: 'huub'
+	}
+
+}
+
+const first_ = triathlon.first;
+const last_ = triathlon.last;
+//console.log(first_, last_);
+
+//give me a var called first and last and take it from triathlon
+const { first, last } = triathlon; 
+const { olympic, itu } = triathlon.medals;
+//console.log(first);
+//console.log(olympic);</code>
+</pre>	
+</div>
+
+<div class="box">
+<h2>Renaming as you destruct</h2>
+<pre>
+<code class="language-js">// I want the first sponsor but i want to call it primary and secondary
+const { one:primary, two:secondary } = triathlon.sponsor
+//console.log(primary)</code></pre></div>
+
+
+<div class="box">
+<h2>Setting defaults</h2>
+<pre>
+<code class="language-js">//set the defaults but if they come from race_leg then use them
+const race_leg = { swim: 'yes', bike: 'run' }
+const {swim = 'no', bike = 'no', run = 'yes'} = race_leg;
+//console.log(swim) yes
+//console.log(run) yes Not found in race_leg so fall back to the default</code></pre>
+</div>
+
+<script>
+
+	const triathlon = {
+		first: 'alistar',
+		last: 'brownlee',
+		country: 'england',
+		medals: {
+			superleague: 'no',
+			olympic: 'gold',
+			itu: 'gold'
+		},
+		sponsor: {
+			one: 'aldi',
+			two: 'yorkshire tea',
+			three: 'scott bikes',
+			four: 'huub'
+		}
+
+	}
+
+	const first_ = triathlon.first;
+	const last_ = triathlon.last;
+	console.log(first_, last_);
+
+	//give me a var called first and last and take it from triathlon
+	const { first, last } = triathlon; 
+	const { olympic, itu } = triathlon.medals;
+	console.log(first);
+	console.log(olympic);
+
+	//renaming as you destruct
+	// i want the first sponsor but i want to call it primary and secondary
+	const { one:primary, two:secondary } = triathlon.sponsor
+
+	//set the defaults but if they come from race_leg then use them
+	const race_leg = { swim: 'yes', bike: 'run' }
+	const {swim = 'no', bike = 'no', run = 'yes'} = race_leg;
+
+
+
+</script>
+
+
+</body>
+</html>
