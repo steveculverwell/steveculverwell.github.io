@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ES6 - Template Strings</title>
+	<link href="https://fonts.googleapis.com/css?family=Quicksand|Roboto:300" rel="stylesheet">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/prism.css">
+	<script src="js/prism.js"></script>
+</head>
+
+<body>
+
+<h1>Template Strings</h1>
+<p class="credit">example taken from http://wesbos.com/courses</<p></p>
+
+<div class="box">
+<p>Putting variables into a string</p>
+<pre>
+<code class="language-js">
+	const day = 'Thursday';
+	const time = 'nine o\'clock';
+
+	const sentence = `Today is ${day} and it is ${time}`;
+</code>
+</pre>	
+</div>
+
+<div class="box">
+<p>Using multiple lines</p>
+<pre>
+<code class="language-js">
+	const meta = {
+		name: 'steve',
+		sport: 'running'
+	}
+
+	const markup = `
+		&lt;div class="meta"&gt;
+			&lt;h2&gt;${meta.name}&lt;/h2&gt;
+			&lt;p&gt;${meta.sport}&lt;/p&gt;
+		&lt;/div&gt;
+		`
+</code>
+</pre>	
+<p>Below is the output...</p>
+<div id="multipleLines"></div>
+</div>
+
+<div class="box">
+<p>Nesting</p>
+<p>Look for the second set of back ticks ``</p>
+<pre>
+<code class="language-js">
+	const people = [
+		{name: 'kelly', age: 'unknown'},
+		{name: 'spenny', age: '1 and a little bit'},
+		{name: 'darcy', age: 'a few months'}
+	];
+
+	const peopleMarkup = `
+		&lt;ul class="people"&gt;
+			${people.map(person => `&lt;li&gt;${person.name} is ${person.age}.&lt;/li&gt;`).join('')}
+		&lt;/ul&gt;
+	`;
+</code>
+</pre>	
+<div id="people"></div>
+</div>
+
+<div class="box">
+<p>If statements</p>
+<pre>
+<code class="language-js">
+	const song = {
+		name: 'Dying to Live',
+		artist: 'Tupac',
+		featuring: 'Biggie Smalls'
+	};
+
+	const songMarkup = `
+		&lt;div class="song"&gt;
+			&lt;p&gt;
+				${song.name} - ${song.artist} ${song.featuring ? `(Featuring ${song.featuring})` : ''}	
+			&lt;/p&gt;
+		&lt;/div&gt;
+	`
+</code>
+</pre>	
+<div id="album"></div>
+</div>
+
+<script>
+	const day = 'Thursday';
+	const time = 'nine o\'clock';
+
+	const sentence = `Today is ${day} and it is ${time}`;
+	console.log(sentence);
+
+
+	const meta = {
+		name: 'steve',
+		sport: 'running'
+	}
+
+	const markup = `<div class="meta">
+		<h2>${meta.name}</h2>
+		<p>${meta.sport}</p>
+		</div>
+		`;
+
+	
+	const element = document.getElementById('multipleLines');
+	element.innerHTML = markup;
+
+		const people = [
+		{name: 'kelly', age: 'unknown'},
+		{name: 'spenny', age: '1 and a little bit'},
+		{name: 'darcy', age: 'a few months'}
+	];
+
+	const peopleMarkup = `
+		<ul class="people">
+			${people.map(person => `<li>${person.name} is ${person.age}.</li>`).join('')}
+		</ul>
+	`;
+	const peopleElement = document.getElementById('people');
+	peopleElement.innerHTML = peopleMarkup;
+
+	const song = {
+		name: 'Dying to Live',
+		artist: 'Tupac',
+		featuring: 'Biggie Smalls'
+	};
+
+	const songMarkup = `
+		<div class="song">
+			<p>
+				${song.name} - ${song.artist} ${song.featuring ? `(Featuring ${song.featuring})` : ''}	
+			</p>
+		</div>
+	`
+	const album = document.getElementById('album');
+	album.innerHTML = songMarkup;
+</script>
+
+
+</body>
+</html>
