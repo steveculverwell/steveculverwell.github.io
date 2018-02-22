@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ES6 - Reduce</title>
+	<link href="https://fonts.googleapis.com/css?family=Quicksand|Roboto:300" rel="stylesheet">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/prism.css">
+	<script src="js/prism.js"></script>
+</head>
+
+<body>
+
+<h1>Reduce</h1>
+<p class="credit">example taken from <a href="https://www.youtube.com/watch?v=Wl98eZpkp-c&t=295s&ab_channel=FunFunFunction">Fun Fun Functions</<a></p>
+
+<div class="box">
+<pre>
+<code class="language-js">const runs = [
+  {distance: 5},
+  {distance: 10},
+  {distance: 21},
+  {distance: 42},
+  {distance: 100}
+]
+
+//@sum is the value of each iteration adding on to it each time.
+//@run is each iteration or loop over the runs array
+const totalDistance = runs.reduce((sum, run) => sum + run.distance, 0);
+
+console.log(`You've run ${totalDistance}km`);
+</code>
+</pre>
+</div>
+
+
+<script>
+const runs = [
+  {distance: 5},
+  {distance: 10},
+  {distance: 21},
+  {distance: 42},
+  {distance: 100}
+]
+
+const totalDistance = runs.reduce((sum, run) => sum + run.distance, 0);
+console.log(`You've run ${totalDistance}km`);
+</script>
+
+
+</body>
+</html>
