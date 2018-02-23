@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Spenny - Animal Sound Board</title>
+  <style>
+
+    .animals{
+    	display: grid;
+    	grid-template-columns: repeat(3, 1fr);
+      grid-gap: 10px;
+    }
+
+    @media (max-width:550px) {
+      .animals{
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+
+    .key{
+      background: green;
+
+      height: 200px;
+      border: .4rem solid black;
+      border-radius: .5rem;
+      font-size: 1.5rem;
+      padding: 1rem .5rem;
+      transition: all .07s ease;
+      text-align: center;
+      color: white;
+    }
+
+    .playing {
+      transform: scale(1.1);
+      border-color: red;
+      box-shadow: 0 0 10px red;
+    }
+
+    kbd {
+      display: block;
+      font-size: 3rem;
+    }
+
+    .sound {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: .1rem;
+      color: #ffc600;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="animals">
+    <div data-key="77" class="key">
+      <span class="sound">A Cow says...</span>
+      <kbd>Moo!</kbd>
+    </div>
+    <div data-key="87" class="key">
+      <span class="sound">Willis says...</span>
+      <kbd>Woof!</kbd>
+    </div>
+    <div data-key="79" class="key">
+      <span class="sound">A Pig says...</span>
+      <kbd>Oink!</kbd>
+    </div>
+    <div data-key="67" class="key">
+      <span class="sound">A Chicken says...</span>
+      <kbd>Cluck!</kbd>
+    </div>
+    <div data-key="71" class="key">
+      <span class="sound">A Lion says...</span>
+      <kbd>Growl!</kbd>
+    </div>
+    <div data-key="82" class="key">
+      <span class="sound">A Dinosaur says...</span>
+      <kbd>Roar!</kbd>
+    </div>
+  </div>
+
+  <audio src="sounds/moo.mp3" data-key="77"></audio>
+  <audio src="sounds/moo.mp3" data-key="87"></audio>
+  <audio src="sounds/moo.mp3" data-key="79"></audio>
+  <audio src="sounds/moo.mp3" data-key="67"></audio>
+  <audio src="sounds/moo.mp3" data-key="71"></audio>
+  <audio src="sounds/moo.mp3" data-key="82"></audio>
+
+  <script type="text/javascript">
+
+    function playSound(e){
+      const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+      const key =  document.querySelector(`.key[data-key="${e.keyCode}"]`);
+      if(!audio) return;
+
+      audio.currentTime = 0;
+      audio.play();
+
+      key.classList.add('playing');
+    }
+
+    function removeTransition(e){
+      if(e.propertyName !== 'transform') return;
+      this.classList.remove('playing');
+    }
+
+    const keys = document.querySelectorAll('.key');
+      keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+    window.addEventListener('keydown', playSound);
+
+  </script>
+
+</body>
+</html>
+
+
+<!--
+77 m cow moo
+87 w dog woof
+79 o pig oink
+67 c chicken cluck
+71 g lion growl
+82 r dinosaur roar
+ -->
