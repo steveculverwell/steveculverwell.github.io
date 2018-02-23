@@ -40,11 +40,11 @@ const last_ = triathlon.last;
 //console.log(first_, last_);
 
 //give me a var called first and last and take it from triathlon
-const { first, last } = triathlon; 
+const { first, last } = triathlon;
 const { olympic, itu } = triathlon.medals;
 //console.log(first);
 //console.log(olympic);</code>
-</pre>	
+</pre>
 </div>
 
 <div class="box">
@@ -59,7 +59,7 @@ const { one:primary, two:secondary } = triathlon.sponsor
 <h2>Setting defaults</h2>
 <pre>
 <code class="language-js">//set the defaults but if they come from race_leg then use them
-const race_leg = { swim: 'yes', bike: 'run' }
+const race_leg = { swim: 'yes', bike: 'no' }
 const {swim = 'no', bike = 'no', run = 'yes'} = race_leg;
 //console.log(swim) yes
 //console.log(run) yes Not found in race_leg so fall back to the default</code></pre>
@@ -90,7 +90,7 @@ const {swim = 'no', bike = 'no', run = 'yes'} = race_leg;
 	console.log(first_, last_);
 
 	//give me a var called first and last and take it from triathlon
-	const { first, last } = triathlon; 
+	const { first, last } = triathlon;
 	const { olympic, itu } = triathlon.medals;
 	console.log(first);
 	console.log(olympic);
