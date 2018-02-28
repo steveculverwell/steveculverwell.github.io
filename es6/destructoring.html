@@ -10,13 +10,13 @@
 </head>
 
 <body>
-
-<h1>Destructuring</h1>
-<p class="credit">example taken from http://wesbos.com/courses</<p></p>
-
-<div class="box">
-<p>Allows you to extract data items from an array into their own variable</p>
-<pre>
+<div class="main">
+	<div class="es6-container--item">
+		<h2>Destructuring</h2>
+		<p class="credit">example taken from http://wesbos.com/courses</p>
+		<div class="box">
+			<p>Allows you to extract data items from an array into their own variable</p>
+			<pre>
 <code class="language-js">const triathlon = {
 	first: 'alistar',
 	last: 'brownlee',
@@ -32,7 +32,6 @@
 		three: 'scott bikes',
 		four: 'huub'
 	}
-
 }
 
 const first_ = triathlon.first;
@@ -43,27 +42,33 @@ const last_ = triathlon.last;
 const { first, last } = triathlon;
 const { olympic, itu } = triathlon.medals;
 //console.log(first);
-//console.log(olympic);</code>
-</pre>
+//console.log(olympic);</code></pre>
+		</div>
+
+<div class="box">
+	<h2>Renaming as you destruct</h2>
+	<p>I want the first sponsor but i want to call it primary and secondary</p>
+<pre>
+<code class="language-js">const { one:primary, two:secondary } = triathlon.sponsor
+//console.log(primary)</code></pre>
 </div>
 
-<div class="box">
-<h2>Renaming as you destruct</h2>
-<pre>
-<code class="language-js">// I want the first sponsor but i want to call it primary and secondary
-const { one:primary, two:secondary } = triathlon.sponsor
-//console.log(primary)</code></pre></div>
-
 
 <div class="box">
-<h2>Setting defaults</h2>
-<pre>
-<code class="language-js">//set the defaults but if they come from race_leg then use them
-const race_leg = { swim: 'yes', bike: 'no' }
+	<h2>Setting defaults</h2>
+	<p>Set the defaults but if they come from race_leg then use them</p>
+	<pre>
+<code class="language-js">const race_leg = { swim: 'yes', bike: 'no' }
 const {swim = 'no', bike = 'no', run = 'yes'} = race_leg;
 //console.log(swim) yes
 //console.log(run) yes Not found in race_leg so fall back to the default</code></pre>
 </div>
+
+	</div>
+</div>
+
+
+
 
 <script>
 

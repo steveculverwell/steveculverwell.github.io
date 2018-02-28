@@ -10,31 +10,34 @@
 </head>
 <body>
 
-<h1>Native Promises</h1>
-<p class="credit">example taken from http://wesbos.com/courses</<p></p>
-
-<div class="box">
-<p>Native browser Promise API</p>
+<div class="main">
+	<div class="es6-container--item">
+		<h2>Native Promises</h2>
+		<p class="credit">example taken from http://wesbos.com/courses</<p></p>
+		<div class="box">
+			<p>Native browser Promise API</p>
 <pre>
-<code class="language-js">fetch('https://api.github.com/users/steveculverwell').then(res => {
-	// .json() returns a promise which allows the chaining of another .then()
+<code class="language-js">fetch('https://api.github.com/users/steveculverwell')
+.then(res => {
 	return res.json();
-}).then(res => {
+})
+.then(res => {
 	console.log(res);
-}).catch(err => {
+})
+.catch(err => {
 	console.error(err)
 });
 </code>
-</pre>
-</div>
+		</pre>
+	</div>
 
-<div class="box">
-<p>Webcam</p>
-<p>You need to be on <a href="https://steveculverwell.github.io/es6/nativePromises.html">https://</a></p>
-<video controls class="videoWindow"></video>
-
-<pre>
+	<div class="box">
+		<h2>Webcam</h2>
+		<p>You need to be on <a href="https://steveculverwell.github.io/es6/nativePromises.html">https://</a></p>
+		<video controls class="videoWindow"></video>
+		<pre>
 <code class="language-js">const video = document.querySelector('.videoWindow');
+
 navigator.mediaDevices.getUserMedia({ video:true })
 // when the user taps Allow on the web cam permissions box
 // this gives up the mediaStream below.
@@ -47,8 +50,18 @@ navigator.mediaDevices.getUserMedia({ video:true })
 	console.error(`An error has occured: ${err.name}`)
 });
 </code>
-</pre>
+		</pre>
+	</div>
+
+
+
+	</div>
 </div>
+
+
+
+
+
 
 
 <script type="text/javascript">
