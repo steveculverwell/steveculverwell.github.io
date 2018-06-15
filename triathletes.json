@@ -1,6 +1,6 @@
 {
-	title: "British Triathletes",
-	male:[
+	"title": "British Triathletes",
+	"male":[
 		{
 			"name": "Alistair Brownlee",
 			"dob": "",
@@ -79,5 +79,5 @@
 			"sponsor":[]
 		}		
 	],
-	female:[]
+	"female":[]
 }
