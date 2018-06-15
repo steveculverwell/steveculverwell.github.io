@@ -1,0 +1,83 @@
+{
+	title: "British Triathletes",
+	male:[
+		{
+			"name": "Alistair Brownlee",
+			"dob": "",
+			"hometown": "",
+			"results":[{},{}],
+			"sponsor":[]
+		},
+		{
+			"name": "Jonathan Brownlee",
+			"dob": "",
+			"hometown": "",
+			"results":[{},{}],
+			"sponsor":[]
+		},
+		{
+			"name": "Marc Austin",
+			"dob": "",
+			"hometown": "",
+			"results":[{},{}],
+			"sponsor":[]
+		},
+		{
+			"name": "Gordon Benson",
+			"dob": "",
+			"hometown": "",
+			"results":[{},{}],
+			"sponsor":[]
+		},
+		{
+			"name": "Tom Bishop",
+			"dob": "",
+			"hometown": "",
+			"results":[{},{}],
+			"sponsor":[]
+		},
+		{
+			"name": "Sam Dickinson",
+			"dob": "",
+			"hometown": "",
+			"results":[{},{}],
+			"sponsor":[]
+		},
+		{
+			"name": "Ben Dijkstra",
+			"dob": "",
+			"hometown": "",
+			"results":[{},{}],
+			"sponsor":[]
+		},
+		{
+			"name": "Grant Sheldon",
+			"dob": "",
+			"hometown": "",
+			"results":[{},{}],
+			"sponsor":[]
+		},
+		{
+			"name": "Alex Yee",
+			"dob": "",
+			"hometown": "",
+			"results":[{},{}],
+			"sponsor":[]
+		},
+		{
+			"name": "Dave Ellis",
+			"dob": "",
+			"hometown": "",
+			"results":[{},{}],
+			"sponsor":[]
+		},
+		{
+			"name": "Andy Lewis",
+			"dob": "",
+			"hometown": "",
+			"results":[{},{}],
+			"sponsor":[]
+		}		
+	],
+	female:[]
+}
