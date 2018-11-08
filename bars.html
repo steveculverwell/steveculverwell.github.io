@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style>
+
+	.container {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		align-items: center;
+		width: 100px; 
+		border: 1px solid red;
+	}
+	.eqBar{
+		margin: 0;
+		padding: 0;
+		width: 10px;
+		background-color: red;
+		animation-direction: alternate;
+		border-radius: 2px;
+	}
+
+	.eqBar1, .eqBar2, .eqBar3, .eqBar4 { height: 52px; }
+	.eqBar1{ animation: pulse1 1.6s infinite; }
+	.eqBar2{ animation: pulse2 1.6s infinite; }
+	.eqBar3{ animation: pulse3 1.6s infinite; }
+	.eqBar4{ animation: pulse4 1.6s infinite; }
+		
+	
+	@keyframes pulse1 {
+		/*		0%   { transform: scaleY(0.2) }*/		
+		0%  { transform: scaleY(0.24) }
+		8%  { transform: scaleY(0.32) }
+		17% { transform: scaleY(0.08)}
+		25% { transform: scaleY(0.32) }
+		33% { transform: scaleY(0.16) }
+		42% { transform: scaleY(0.28) }
+		50% { transform: scaleY(0.24) }
+		58% { transform: scaleY(0.24) }
+		67% { transform: scaleY(0.32) }
+		75% { transform: scaleY(0.08)}
+		83% { transform: scaleY(0.32) }
+		92% { transform: scaleY(0.16) }
+		100% { transform: scaleY(0.24) }
+	}
+
+	@keyframes pulse2 {
+		0%   { transform: scaleY(0.16)}
+		8%   { transform: scaleY(0.8)}
+		17%   { transform: scaleY(0.10)}
+		25% { transform: scaleY(0.16)}
+		33% { transform: scaleY(0.4)}
+		42% { transform: scaleY(0.32)}
+		50% { transform: scaleY(0.16)}
+		58%   { transform: scaleY(0.8)}
+		67%   { transform: scaleY(0.10)}
+		75%   { transform: scaleY(0.16)}
+		83% { transform: scaleY(0.4)}
+		92% { transform: scaleY(0.32)}
+		100% { transform: scaleY(0.16)}
+
+	}
+	@keyframes pulse3 {
+		0%   { transform: scaleY(0.32) }
+		10%  { transform: scaleY(0.8) }
+		20%  { transform: scaleY(0.32) }
+		25%  { transform: scaleY(0.6) }
+		30%  { transform: scaleY(0.24) }
+		38%  { transform: scaleY(0.3) }
+		50% { transform: scaleY(0.32) }
+		60%  { transform: scaleY(0.8) }
+		70%  { transform: scaleY(0.32) }
+		75%  { transform: scaleY(0.6) }
+		80%  { transform: scaleY(0.24) }
+		88%  { transform: scaleY(0.3) }
+		100% { transform: scaleY(0.32) }
+
+	}
+	@keyframes pulse4 {
+		0%   { transform: scaleY(0.10) }
+		8% { transform: scaleY(0.16) }
+		16% { transform: scaleY(0.4) }
+		26% { transform: scaleY(0.32) }
+		33% { transform: scaleY(0.16) }
+		41%   { transform: scaleY(0.8) }
+		50%   { transform: scaleY(0.10) }
+		58%   { transform: scaleY(0.16) }
+		66% { transform: scaleY(0.4) }
+		75% { transform: scaleY(0.32) }
+		83% { transform: scaleY(0.16) }
+		100%   { transform: scaleY(0.10) }
+
+	}
+
+
+	</style>
+
+</head>
+<body>
+	
+	<div class="container">
+		<div id="b1" class="eqBar eqBar1"></div>
+		<div id="b2" class="eqBar eqBar2"></div>
+		<div id="b3" class="eqBar eqBar3"></div>
+		<div id="b4" class="eqBar eqBar4"></div>
+	</div>
+	
+</body>
+</html>
