@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ES6 - Async / Await</title>
+	<link href="https://fonts.googleapis.com/css?family=Quicksand|Roboto:300" rel="stylesheet">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/prism.css">
+	<script src="js/prism.js"></script>
+</head>
+<body>
+	<div class="main">
+		<div class="es6-container--item">
+			<h2>Async / Await</h2>
+			
+			<p class="credit">example taken from http://wesbos.com/courses</p>
+
+			<p>Synchronously: Wait for task to be done before you continue on with the rest of your actual code.</p>
+			<p>Asynchronously: Start the task, then immediately move on.</p>
+			
+			<div class="box">
+				<pre><code class="language-js">let user = fetch('https://api.github.com/users/steveculverwell');
+console.log(user);
+// this returns a < Promise ></code></pre>
+			</div>
+
+
+			<p>The fetch wont sit around and wait until it hears back. That would be called blocking. An alert() is a blocking function. </p>
+			<div class="box">
+				<pre><code class="language-js">function timer(amount) {
+	return new Promise( (resolve, reject) => {
+		if(amount < 500) {
+			reject('that is too small of a value')	;
+		}
+		setTimeout(() => resolve(`Done for ${amount} ms`), amount);
+	});
+}
+
+async function go() {
+	console.log('start');
+	let res = await timer(2000);
+	console.log(res);
+	let res1 = await timer(2000);
+	console.log(res);
+	let res2 = await timer(1000);
+	console.log(res2)
+	console.log('end');
+}
+go();</code></pre></div>
+				<script>
+				function sandTimer(amount) {
+					return new Promise( (resolve, reject) => {
+						if(amount < 500) {
+							reject('that is too small of a value')	;
+						}
+						setTimeout(() => resolve(`Done for ${amount} ms using the sand timer.`), amount);
+					});
+				}
+
+				async function go() {
+					console.log('starting sand timer');
+						let res = await sandTimer(2000);
+						console.log(res);
+						let res1 = await sandTimer(2000);
+						console.log(res1);
+						let res2 = await sandTimer(1000);
+						console.log(res2);
+					console.log('ending sand timer');
+				}
+				go();
+				</script>
+			
+
+			<h2>Async / Await using try catch</h2>
+			<p>Catching errors using the try catch approach.</p>
+			
+			<div class="box"><pre><code class="language-js">function digitalTimer(amount) {
+	return new Promise( (resolve, reject) => {
+		if(amount < 500) {
+			reject('that is too small of a value')	;
+		}
+		setTimeout(() => resolve(`Done for ${amount} ms using the digital timer.`), amount);
+	});
+}
+
+async function goDigitalTimer() {
+	try {
+		console.log('starting digital timer');
+		let res = await digitalTimer(3000);
+		console.log(res);
+		let res1 = await digitalTimer(1000);
+		console.log(res1);
+		let res2 = await digitalTimer(200);
+		console.log(res2);
+		console.log('ending digital timer');
+	} catch (err) {
+		console.error(err);
+	}
+}
+goDigitalTimer();
+				
+			</code></pre>
+				
+			</div><!-- close box -->
+			<script>
+				function digitalTimer(amount) {
+					return new Promise( (resolve, reject) => {
+						if(amount < 500) {
+							reject('that is too small of a value')	;
+						}
+						setTimeout(() => resolve(`Done for ${amount} ms using the digital timer.`), amount);
+					});
+				}
+
+				async function goDigitalTimer() {
+					try {
+					console.log('starting digital timer');
+						let res = await digitalTimer(3000);
+						console.log(res);
+						let res1 = await digitalTimer(1000);
+						console.log(res1);
+						let res2 = await digitalTimer(200);
+						console.log(res2);
+					console.log('ending digital timer');
+					} catch (err) {
+						console.error(err);
+					}
+				}
+				goDigitalTimer();
+			</script>
+
+
+
+
+
+
+
+		</div><!--close es6-container-item -->
+	</div><!-- close main -->
+</body>
+</html>
