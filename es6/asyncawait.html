@@ -129,9 +129,81 @@ goDigitalTimer();
 				goDigitalTimer();
 			</script>
 
+			<h2>Async / Await using higher order functions</h2>
+			<p>Higher order function: A function, that takes in a function as an argument, and returns a new function.</p>
+			<div class="box"><pre><code class="language-js">function mechanicalTimer(amount) {
+	return new Promise( (resolve, reject) => {
+		if(amount < 500) {
+			reject('that is too small of a value')	;
+		}
+		setTimeout(() => resolve(`Done for ${amount} ms using the mechanical timer.`), amount);
+	});
+}
 
+function catchErrors(fn){ // 1) take in a function 
+	return function(...args) { // rest and spread
+		//3) run the function you passed in.
+		return fn(...args).catch((err) => { // 4) and then add the .catch() function on the end.
+			console.error('oh no');
+			console.error(err);
+		})
+	}
+}
 
+async function goMechanicalTimer(name, last) {
+		
+	console.log(`starting mechanical timer called ${name} ${last}`);
+		let res = await mechanicalTimer(3000);
+		console.log(res);
+		let res1 = await mechanicalTimer(200);
+		console.log(res1);
+		let res2 = await mechanicalTimer(1000);
+		console.log(res2);
+	console.log('ending mechanical timer');
+}
 
+// 2) make a wrapped function that runs goMechanicalTimer	
+const wrappedFunction = catchErrors(goMechanicalTimer); 
+wrappedFunction('clickity clack', 'nickity nackity');</code></pre></div>
+			<script type="text/javascript">
+
+				function mechanicalTimer(amount) {
+					return new Promise( (resolve, reject) => {
+						if(amount < 500) {
+							reject('that is too small of a value')	;
+						}
+						setTimeout(() => resolve(`Done for ${amount} ms using the mechanical timer.`), amount);
+					});
+				}
+
+				function catchErrors(fn){
+					return function(...args) { // rest
+						return fn(...args).catch((err) => { // spread
+							console.error('oh no');
+							console.error(err);
+						})
+					}
+				}
+
+				async function goMechanicalTimer(name, last) {
+						
+					console.log(`starting mechanical timer called ${name} ${last}`);
+						
+						let res = await mechanicalTimer(3000);
+						console.log(res);
+
+						let res1 = await mechanicalTimer(200);
+						console.log(res1);
+
+						let res2 = await mechanicalTimer(1000);
+						console.log(res2);
+
+					console.log('ending mechanical timer');
+				}
+				
+				const wrappedFunction = catchErrors(goMechanicalTimer);				
+				wrappedFunction('clickity clack', 'nickity nackity');
+			</script>
 
 
 
