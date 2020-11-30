@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B64 Decode</title>
+</head>
+<body>
+  
+
+  <form name="decode">
+    <input type="text" value="" id="b64decode" name="b64decode" />
+    <button type="submit">Decode</button>
+  </form>
+
+
+  <script>
+    const decodeForm = document.querySelector('[name="decode"]');
+
+    decodeForm.addEventListener('submit', function(event){
+
+      // grab form value and decode it.
+      const valueToDecode = event.currentTarget.b64decode.value;
+      const decodedValue = window.atob(valueToDecode);
+      
+      // place decoded url on screen
+      const decodedPlaceholder = document.createElement('p');
+      decodedPlaceholder.textContent = decodedValue;
+      document.body.appendChild(decodedPlaceholder);
+      
+      event.preventDefault();
+    })
+
+  </script>
+
+</body>
+</html>
+
+<!-- const valueToDecode = event.currentTarget.b64decode.value;
+const decodedValue = window.atob(valueToDecode);
+
+const decodedLink = document.createElement('a');
+const decodedLinkText = document.createTextNode('Decoded href');
+
+decodedLink.appendChild(decodedLinkText);
+decodedLink.href = decodedValue;
+
+document.body.appendChild(decodedValue); -->
